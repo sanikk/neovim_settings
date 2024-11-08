@@ -27,9 +27,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 local languages = {
    "clangd",
-   "html",
    "cssls",
-   "tsserver",
+   "ts_ls",
    "emmet_ls",
    "eslint",
    "pyright",
@@ -45,9 +44,11 @@ return {
          require("tailwindcss-colors").setup()
       end,
    },
+   { "hrsh7th/nvim-cmp", lazy=true },
+
+   { "hrsh7th/cmp-nvim-lsp", lazy=true },
    {
       "neovim/nvim-lspconfig",
-      dependencies = { "hrsh7th/cmp-nvim-lsp" },
       config = function()
          local capabilities = require("cmp_nvim_lsp").default_capabilities()
          require("lspconfig").lua_ls.setup({
